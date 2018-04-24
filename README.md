@@ -1,0 +1,3 @@
+# Funny Algorithm
+
+😅
