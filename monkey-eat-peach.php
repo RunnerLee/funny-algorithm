@@ -25,7 +25,7 @@ while ($i += 5) {
         }
         
         // 能够被五个猴子连续拿, 则成功并退出.
-        if (5 === ++$count) {
+        if (5 === ++$monkeys) {
             return true;
         }
 
