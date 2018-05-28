@@ -22,9 +22,9 @@ function bubble_sort(array $arr)
     return $arr;
 }
 
-//$arr = range(1, 10);
-
-$arr = [1,2,3,4,5,6,7,8,9,10,1,3,4,9,2];
+$arr = range(1, 10);
+//
+//$arr = [1,2,3,4,5,6,7,8,9,10,1,3,4,9,2];
 
 shuffle($arr);
 
