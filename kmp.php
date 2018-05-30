@@ -46,14 +46,16 @@ function make_next($string)
     for ($k = 1; $k < $length; ++$k) {
 
         // 上一位长度是 0, 且当前位置的字符同字符串第一位相符, 则将 cnd 置为 1
-        if (0 === $cnd) {
-            if ($string[$k] === $string[0]) {
-                $cnd = 1;
-            }
-        } else {
-            // 上一位长度非 0, 判断当前位置的字符与对应位置的字符串是否相同, 如果相同则 cnt 增 1, 否则重置为 0
-            $cnd = $string[$k] !== $string[$cnd] ? 0 : ($cnd + 1);
-        }
+//        if (0 === $cnd) {
+//            if ($string[$k] === $string[0]) {
+//                $cnd = 1;
+//            }
+//        } else {
+//            // 上一位长度非 0, 判断当前位置的字符与对应位置的字符串是否相同, 如果相同则 cnt 增 1, 否则重置为 0
+//            $cnd = $string[$k] !== $string[$cnd] ? 0 : ($cnd + 1);
+//        }
+
+        $cnd = 0 == $cnd ? ($string[$k] === $string[0] ? 1 : 0) : ($string[$k] !== $string[$cnd] ? 0 : ($cnd + 1));
 
         // 设置当前位置的最长前后缀共有元素长度
         $next[$k] = $cnd;
@@ -82,6 +84,6 @@ array_map(
 
 echo "\n";
 
-//echo strpos($string, 'ABCDABD') . "\n";
+echo strpos($string, 'ABCDABD') . "\n";
 
 echo kmp($string, 'ABCDABD') . "\n";
