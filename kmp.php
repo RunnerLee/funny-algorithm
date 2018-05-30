@@ -4,7 +4,7 @@
  * @email: runnerleer@gmail.com
  * @time: 2018-05
  */
-function kmp($haystack, $needle)
+function kmp($haystack, $needle, $offset = 0)
 {
     // 被查找字符串长度
     $haystackLenght = strlen($haystack);
@@ -18,17 +18,17 @@ function kmp($haystack, $needle)
     // 制作部分匹配表
     $next = make_next($needle);
 
-    for ($i = 0; $i < $searchSteps; ++$i) {
+    for ($offset = 0; $offset < $searchSteps; ++$offset) {
         // 开始匹配
         for ($k = 0; $k < $needleLength; ++$k) {
-            if ($needle[$k] !== $haystack[$i + $k]) {
+            if ($needle[$k] !== $haystack[$offset + $k]) {
                 // 出现不匹配, 则调整位置
-                $i += $next[$k - 1] ?? 0;
+                $offset += $next[$k - 1] ?? 0;
                 continue 2;
             }
         }
         // 如果被查找字符串全部验完, 则直接返回 位置
-        return $i;
+        return $offset;
     }
 
     return false;
