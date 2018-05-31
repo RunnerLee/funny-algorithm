@@ -23,7 +23,7 @@ function kmp($haystack, $needle, $offset = 0)
         for ($k = 0; $k < $needleLength; ++$k) {
             if ($needle[$k] !== $haystack[$offset + $k]) {
                 // 出现不匹配, 则调整位置
-                $offset += $next[$k - 1] ?? 0;
+                $offset += $k - ($next[$k - 1] ?? 0);
                 continue 2;
             }
         }
@@ -65,7 +65,7 @@ function make_next($string)
 }
 
 //$string = 'participate in parachute';
-$string = 'ABCDAB ABCDABCDABDE';
+$string = 'ABCDABCDABDE';
 
 $next = make_next($string);
 
